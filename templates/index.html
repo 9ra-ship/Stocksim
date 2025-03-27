@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Learning</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background:linear-gradient(90deg, #18bc9c, #2c3e50) ;
+            background-size: cover;
+            color: #2c3e50;
+        }
+        .header-section {
+            background: linear-gradient(90deg, #18bc9c, #2c3e50);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        .btn-custom {
+            background-color: #18bc9c;
+            color: white;
+            border: none;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn-custom:hover {
+            background-color: #26a58c;
+            transform: scale(1.1);
+        }
+        .ticker {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+        }
+        #scoreBox {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #18bc9c;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        #scoreBox i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        footer {
+            animation: slideUp 1s;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        #search-bar {
+            margin: 30px auto;
+            text-align: center;
+        }
+        #search-bar input {
+            width: 50%;
+            padding: 10px;
+            border: 2px solid #18bc9c;
+            border-radius: 5px;
+        }
+        #search-bar button {
+            background-color: #18bc9c;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #search-bar button:hover {
+            background-color: #1abc9c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-section">
+        <h1>Stock Market Mastermind</h1>
+        <p class="lead">Enhance your stock trading knowledge with interactive lessons and quizzes!</p>
+    </div>
+
+    <div class="ticker">
+        <marquee>AAPL: $145|MSFT: $320|AMZN: $135| GOOG: $2850| TSLA: $250| META: $290| NVDA: $500| NFLX: $420| SPY: $410| AMD: $110| DIS: $95| BA: $225| V: $240| WMT: $160| CSCO: $53| IBM: $130| INTC: $35| PYPL: $70| COIN: $80</marquee>
+    </div>
+
+    <div id="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for lessons or quizzes...">
+        <button onclick="searchContent()">Search</button>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="mb-4">Learning Material</h2>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">1. Introduction to the Stock Market</h5>
+                        <p class="card-text">Learn the basics of stock markets, how they work, and key terms like stocks, shares, and IPOs.</p>
+                        <a href="{{ url_for('lesson', lesson_number=1) }}" class="btn btn-custom">Start Lesson 1</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">2. Stock Market Strategies</h5>
+                        <p class="card-text">Discover different trading strategies, including day trading, swing trading, and long-term investing.</p>
+                        <a href="{{ url_for('lesson', lesson_number=2) }}" class="btn btn-custom">Start Lesson 2</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">3. Understanding Market Indicators</h5>
+                        <p class="card-text">Learn about important market indicators like moving averages, RSI, and MACD.</p>
+                        <a href="{{ url_for('lesson', lesson_number=3) }}" class="btn btn-custom">Start Lesson 3</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">4. Risk Management in Trading</h5>
+                        <p class="card-text">Understand how to manage risks, set stop losses, and protect your investments.</p>
+                        <a href="{{ url_for('lesson', lesson_number=4) }}" class="btn btn-custom">Start Lesson 4</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">5. Stock Market Psychology</h5>
+                        <p class="card-text">Master the psychological aspects of trading, including handling fear and greed.</p>
+                        <a href="{{ url_for('lesson', lesson_number=5) }}" class="btn btn-custom">Start Lesson 5</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="mb-4">Quizzes</h2>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quiz: Stock Market Basics</h5>
+                        <p class="card-text">Test your knowledge of stock market fundamentals.</p>
+                        <a href="{{ url_for('quiz', quiz_number=1) }}" class="btn btn-custom">Start Quiz 1</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quiz: Trading Strategies</h5>
+                        <p class="card-text">Evaluate your understanding of trading strategies and techniques.</p>
+                        <a href="{{ url_for('quiz', quiz_number=2) }}" class="btn btn-custom">Start Quiz 2</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quiz: Market Indicators</h5>
+                        <p class="card-text">Test your knowledge of key market indicators and their applications.</p>
+                        <a href="{{ url_for('quiz', quiz_number=3) }}" class="btn btn-custom">Start Quiz 3</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quiz: Risk Management</h5>
+                        <p class="card-text">Assess your understanding of risk management techniques in trading.</p>
+                        <a href="{{ url_for('quiz', quiz_number=4) }}" class="btn btn-custom">Start Quiz 4</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quiz: Trading Psychology</h5>
+                        <p class="card-text">Evaluate your grasp of trading psychology and emotional control.</p>
+                        <a href="{{ url_for('quiz', quiz_number=5) }}" class="btn btn-custom">Start Quiz 5</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="mb-4">Your Progress</h2>
+                <a href="{{ url_for('progress') }}" class="btn btn-custom">Track Your Progress</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center mt-5 py-3 text-white">
+        <p>&copy; 2024 Stock Market Mastermind</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        let score = 0;
+
+        function checkAnswer(answer) {
+            if (answer === 'correct') {
+                alert('Correct!');
+                score++;
+            } else {
+                alert('Try again!');
+            }
+            document.getElementById('score').innerText = `Score: ${score}`;
+        }
+
+        function searchContent() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const text = card.querySelector('.card-text').textContent.toLowerCase();
+                if (title.includes(input) || text.includes(input)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

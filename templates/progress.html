@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Progress</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background:linear-gradient(90deg, #18bc9c, #2c3e50) ;
+            color: #2c3e50;
+        }
+        .progress-section {
+            margin-top: 30px;
+        }
+        .progress {
+            height: 25px;
+        }
+        .btn-reset {
+            background-color: #18bc9c;
+            color: white;
+        }
+        .btn-reset:hover {
+            background-color: #1e8d76;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <h1>Your Progress</h1>
+            <p class="lead">Track your progress in lessons and quizzes.</p>
+        </div>
+
+        <!-- Lessons Section -->
+        <div class="card">
+            <div class="card-body">
+                <h4>Lessons Progress</h4>
+                <ul>
+                    {% set completed_lessons = lessons | selectattr('completed') | list | length %}
+                    {% set total_lessons = lessons | length %}
+                    {% set lesson_progress = (completed_lessons / total_lessons) * 100 if total_lessons > 0 else 0 %}
+
+                    {% for lesson in lessons %}
+                        <li>
+                            {{ lesson.lesson_name }} -
+                            {% if lesson.completed %}
+                                <span class="text-success"><i class="fas fa-check-circle"></i> Completed</span>
+                            {% else %}
+                                <a href="{{ url_for('update_lesson', lesson_id=lesson.id) }}" class="text-primary">Mark as Completed</a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="progress-section">
+                    <p><strong>Lessons Completed: {{ completed_lessons }} / {{ total_lessons }}</strong></p>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ lesson_progress }}%;" aria-valuenow="{{ lesson_progress }}" aria-valuemin="0" aria-valuemax="100">
+                            {{ lesson_progress | round(2) }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quizzes Section -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4>Quizzes Progress</h4>
+                <ul>
+                    {% set total_score = quizzes | map(attribute='score') | sum if quizzes | length > 0 else 0 %}
+                    {% set quiz_progress = (total_score / (quizzes | length * 100)) * 100 if quizzes | length > 0 else 0 %}
+
+                    {% for quiz in quizzes %}
+                        <li>
+                            {{ quiz.quiz_name }} -
+                            {% if quiz.score %}
+                                <span class="text-success">Score: {{ quiz.score }}%</span>
+                            {% else %}
+                                <a href="{{ url_for('update_quiz', quiz_id=quiz.id, score=100) }}" class="text-primary">Take Quiz</a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="progress-section">
+                    <p><strong>Total Score: {{ total_score }}%</strong></p>
+                    <div class="progress">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: {{ quiz_progress }}%;" aria-valuenow="{{ quiz_progress }}" aria-valuemin="0" aria-valuemax="100">
+                            {{ quiz_progress | round(2) }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reset Progress Button -->
+        <div class="text-center mt-4">
+            <form action="{{ url_for('progress') }}" method="post">
+                <button type="submit" class="btn btn-reset">Reset Progress</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="text-center mt-5 py-3 text-white">
+        <p>&copy; 2024 Stock Market Mastermind</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

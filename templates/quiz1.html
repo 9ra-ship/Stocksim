@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Stock Market Basics</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(90deg, #18bc9c, #2c3e50);;
+            color: #2c3e50;
+        }
+        .header-section {
+            background-color: #2c3e50;
+            color: #18bc9c;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            background-color: #18bc9c;
+            color: white;
+            border: none;
+        }
+        .progress-bar {
+            background-color: #18bc9c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-section">
+        <h1>Quiz: Stock Market Basics</h1>
+    </div>
+
+    <div class="container mt-5">
+        <form id="quizForm">
+            <!-- Quiz Questions -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">1. What is a stock?</h5>
+                    <ul>
+                        <li><input type="radio" name="q1" value="0"> A loan given to a company</li>
+                        <li><input type="radio" name="q1" value="1"> A share in the ownership of a company</li>
+                        <li><input type="radio" name="q1" value="0"> A company's revenue</li>
+                        <li><input type="radio" name="q1" value="0"> A company's debt</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">2. Which of the following is the main purpose of a stock exchange?</h5>
+                    <ul>
+                        <li><input type="radio" name="q2" value="0"> To regulate company operations</li>
+                        <li><input type="radio" name="q2" value="1"> To provide a platform for buying and selling stocks</li>
+                        <li><input type="radio" name="q2" value="0"> To lend money to companies</li>
+                        <li><input type="radio" name="q2" value="0"> To issue government bonds</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">3. What does IPO stand for?</h5>
+                    <ul>
+                        <li><input type="radio" name="q3" value="0"> International Profit Offer</li>
+                        <li><input type="radio" name="q3" value="1"> Initial Public Offering</li>
+                        <li><input type="radio" name="q3" value="0"> Investment Portfolio Option</li>
+                        <li><input type="radio" name="q3" value="0"> Individual Property Ownership</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">4. Which regulatory body oversees the stock market in the United States?</h5>
+                    <ul>
+                        <li><input type="radio" name="q4" value="1"> SEC (Securities and Exchange Commission)</li>
+                        <li><input type="radio" name="q4" value="0"> NYSE (New York Stock Exchange)</li>
+                        <li><input type="radio" name="q4" value="0"> Federal Reserve</li>
+                        <li><input type="radio" name="q4" value="0"> World Bank</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">5. What is a dividend?</h5>
+                    <ul>
+                        <li><input type="radio" name="q5" value="0"> A type of stock</li>
+                        <li><input type="radio" name="q5" value="1"> A portion of a company's earnings distributed to shareholders</li>
+                        <li><input type="radio" name="q5" value="0"> The interest rate paid on stock</li>
+                        <li><input type="radio" name="q5" value="0"> A fee charged for trading stocks</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">6. What does a bullish market indicate?</h5>
+                    <ul>
+                        <li><input type="radio" name="q6" value="0"> Stock prices are expected to decrease</li>
+                        <li><input type="radio" name="q6" value="0"> Stock prices are expected to remain stable</li>
+                        <li><input type="radio" name="q6" value="1"> Stock prices are expected to increase</li>
+                        <li><input type="radio" name="q6" value="0"> Stock trading is temporarily halted</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">7. What is the opposite of a bullish market?</h5>
+                    <ul>
+                        <li><input type="radio" name="q7" value="1"> Bearish market</li>
+                        <li><input type="radio" name="q7" value="0"> Neutral market</li>
+                        <li><input type="radio" name="q7" value="0"> Consolidation market</li>
+                        <li><input type="radio" name="q7" value="0"> Volatile market</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">8. What is the primary reason companies issue stocks?</h5>
+                    <ul>
+                        <li><input type="radio" name="q8" value="0"> To pay off debts</li>
+                        <li><input type="radio" name="q8" value="1"> To raise capital for expansion and growth</li>
+                        <li><input type="radio" name="q8" value="0"> To reduce competition</li>
+                        <li><input type="radio" name="q8" value="0"> To increase employee salaries</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">9. What is a stock index?</h5>
+                    <ul>
+                        <li><input type="radio" name="q9" value="1"> A measure of the performance of a group of stocks</li>
+                        <li><input type="radio" name="q9" value="0"> A type of stock</li>
+                        <li><input type="radio" name="q9" value="0"> A tool for buying stocks</li>
+                        <li><input type="radio" name="q9" value="0"> A company's annual report</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">10. Which of the following is an example of a stock index?</h5>
+                    <ul>
+                        <li><input type="radio" name="q10" value="0"> Nasdaq</li>
+                        <li><input type="radio" name="q10" value="0"> Dow Jones Industrial Average</li>
+                        <li><input type="radio" name="q10" value="0"> S&P 500</li>
+                        <li><input type="radio" name="q10" value="1"> All of the above</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">11. What is market capitalization?</h5>
+                    <ul>
+                        <li><input type="radio" name="q11" value="0"> The total revenue of a company</li>
+                        <li><input type="radio" name="q11" value="1"> The total value of a company’s outstanding shares</li>
+                        <li><input type="radio" name="q11" value="0"> The amount of profit a company makes annually</li>
+                        <li><input type="radio" name="q11" value="0"> The number of shares a company issues</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">12. What is a stockbroker?</h5>
+                    <ul>
+                        <li><input type="radio" name="q12" value="0"> A person who creates stock indices</li>
+                        <li><input type="radio" name="q12" value="1"> A person who buys and sells stocks on behalf of investors</li>
+                        <li><input type="radio" name="q12" value="0"> A company that owns stock exchanges</li>
+                        <li><input type="radio" name="q12" value="0"> A regulator of the stock market</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">13. What is the main risk of investing in the stock market?</h5>
+                    <ul>
+                        <li><input type="radio" name="q13" value="0"> Fixed returns</li>
+                        <li><input type="radio" name="q13" value="1"> Loss of invested capital due to price fluctuations</li>
+                        <li><input type="radio" name="q13" value="0"> Guaranteed losses in a bullish market</li>
+                        <li><input type="radio" name="q13" value="0"> No chance of earning dividends</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">14. What is liquidity in the context of the stock market?</h5>
+                    <ul>
+                        <li><input type="radio" name="q14" value="0"> The stability of stock prices</li>
+                        <li><input type="radio" name="q14" value="1"> The ease of converting stocks into cash</li>
+                        <li><input type="radio" name="q14" value="0"> The time taken to earn dividends</li>
+                        <li><input type="radio" name="q14" value="0"> The annual return of an investment</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">15. What is a blue-chip stock?</h5>
+                    <ul>
+                        <li><input type="radio" name="q15" value="1"> A stock from a well-established, financially stable company</li>
+                        <li><input type="radio" name="q15" value="0"> A stock with high volatility</li>
+                        <li><input type="radio" name="q15" value="0"> A stock issued during an IPO</li>
+                        <li><input type="radio" name="q15" value="0"> A stock with no market capitalization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-custom mt-4" id="submitQuiz">Submit Quiz</button>
+        </div>
+    </form>
+
+        <div class="mt-3" id="result" style="display: none;">
+            <h4>Your Score: <span id="score"></span>%</h4>
+            <div class="progress mt-3">
+                <div class="progress-bar" role="progressbar" style="width: 0%;" id="scoreProgressBar"></div>
+            </div>
+            <a href="/progress" class="btn btn-primary mt-3">View Progress</a>
+            <button class="btn btn-warning mt-3" id="retryQuiz">Retry Quiz</button>
+        </div>
+    </div>
+
+    <footer class="text-center mt-5 py-3 text-white">
+        <p>&copy; 2024 Stock Market Mastermind</p>
+    </footer>
+
+    <script>
+        document.getElementById('submitQuiz').addEventListener('click', function () {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+    
+            let totalScore = 0;
+            const maxScore = 15; // Total number of questions
+    
+            // Calculate the total score
+            for (let [key, value] of formData.entries()) {
+                totalScore += parseInt(value);
+            }
+    
+            const percentage = (totalScore / maxScore) * 100;
+    
+            // Update progress bar
+            const progressBar = document.getElementById('scoreProgressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = Math.round(percentage) + '%';
+    
+            // Show the result
+            document.getElementById('score').innerText = percentage.toFixed(2);
+            document.getElementById('result').style.display = 'block';
+    
+            // Send data to the server
+            fetch('/submit_quiz', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ score: percentage })
+            });
+        });
+    
+        // Retry quiz functionality
+        document.getElementById('retryQuiz').addEventListener('click', function () {
+            const form = document.getElementById('quizForm');
+            form.reset();
+    
+            const progressBar = document.getElementById('scoreProgressBar');
+            progressBar.style.width = '0%';
+            progressBar.textContent = '';
+    
+            document.getElementById('result').style.display = 'none';
+        });
+    </script>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

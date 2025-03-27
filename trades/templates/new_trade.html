@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+  New Trade
+{% endblock title %}
+
+{% block content %}
+  <div class="container col-6 mt-3">
+  
+    <h4 class="mb-3">New Trade</h4>
+    <form id="new-trade-form">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ form.symbol.label }}
+        {{ form.symbol(class_="form-control") }}
+        <span id="symbol-error"
+              class="small text-danger d-none">Error</span>
+      </div>
+      <div class="form-group">
+        <div>{{ form.type.label }}</div>
+        <div class="form-check form-check-inline">
+          {% for subfield in form.type %}
+            {{ subfield(class_="form-check-label mr-2") }}
+            {{ subfield.label(class_="form-check-input mt-2") }}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="form-group">
+        {{ form.qty.label }}
+        {{ form.qty(class_="form-control") }}
+        <span id="qty-error"
+              class="small text-danger d-none">Error</span>
+      </div>
+      <button type="reset"
+              class="btn btn-secondary mr-2">Reset</button>
+      <button type="submit"
+              class="btn btn-primary">Submit</button>
+    </form>
+    {% include "trade_confirmation.html" %}
+  </div>
+  <div id="other-error"
+       class="container mt-5 d-none text-danger"></div>
+{% endblock content %}
+
+<!--JS-->
+{% block scripts %}
+  <script src="{{url_for('.static', filename='new_trade.js')}}"></script>
+{% endblock scripts %}
