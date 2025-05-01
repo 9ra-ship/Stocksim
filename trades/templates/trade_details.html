@@ -5,6 +5,43 @@
 {% endblock title %}
 
 {% block content %}
+<style>
+  /* Close Trade - Danger Button */
+  .btn-danger {
+    background-color: #b03c3c !important;
+    color: #ffffff !important;
+    border: none;
+  }
+
+  .btn-danger:hover {
+    background-color: #8b2d2d !important;
+  }
+
+  /* View Dashboard - Secondary Button */
+  .btn-secondary {
+    background-color: #e4e9e2 !important;
+    color: #34473a !important;
+    border: 1px solid #c8d1c3;
+  }
+
+  .btn-secondary:hover {
+    background-color: #d5dfd3 !important;
+    color: #2c3a2f !important;
+  }
+
+  /* View Open Trades - Primary Button */
+  .btn-primary {
+    background-color: #34473a !important;
+    color: #FBFADA !important;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #486350 !important;
+    color: #ffffff !important;
+  }
+</style>
+
   <div class="container mt-3">
     <!--Trade Card-->
     <div class="card">

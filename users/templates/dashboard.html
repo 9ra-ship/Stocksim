@@ -3,213 +3,408 @@
 {% set open_trades = dashboard.open_trades %}
 {% set closed_trades = dashboard.closed_trades %}
 
-{% block title %}
-  Dashboard
-{% endblock title %}
+{% block title %}Dashboard{% endblock %}
 
 {% block content %}
-  <div class="container mt-4">
-    <!--Cards-->
-    <div class="card-deck mb-3 justify-content-center "
-         id="account-balance-container">
-      <div class="card border-light mb-3"
-           style="max-width: 18rem">
-        <div class="card-header text-center text-light font-weight-bold bg-primary">ACCOUNT BALANCE</div>
-        <div class="card-body">
-          <h4 class="card-title text-center"
-              id="account-balance">{{ "${:,.2f}".format(user.account_balance) }}</h4>
+    <!-- TradingView Ticker Widget -->
+    <div class="tradingview-Tickerwidget-container my-4"  style="background: #486350;
+    border: 1px solid #486350;
+    border-radius: 8px;
+    padding: 4px 4px 4px 4px;
+    backdrop-filter: blur(4px);">
+      <div class="tradingview-Tickerwidget-container__widget"></div>
+      <div class="tradingview-Tickerwidget-copyright"  style=" 
+      font-size: 12px; 
+      text-align: center;
+      margin-top: 1px;
+      margin-bottom: 2px;">
+        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" >
+          <span class="white-text" style="color: #ffffff;">Find more about the latest trends and track all markets on TradingView</span>
+        </a>
+      </div>
+      <script type="text/javascript">
+        new TradingView.widget({
+          "symbols": [
+            { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500 Index" },
+            { "proName": "FOREXCOM:NSXUSD", "title": "US 100 Cash CFD" },
+            { "proName": "FX_IDC:EURUSD", "title": "EUR to USD" },
+            { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
+            { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" }
+          ],
+          "showSymbolLogo": "true",
+          "isTransparent": "true",
+          "displayMode": "adaptive",
+          "colorTheme": "dark",
+          "locale": "en",
+          "container_id": "tradingview-Tickerwidget-container"
+        });
+      </script>
+      <script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"></script>
+    </div>
+<div class="dashboard-container" style="min-height: 100vh; position: relative;">
+  <!-- Portfolio Section with Dropdown -->
+  <div class="portfolio-summary mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="section-title" style="color: #2e4230;"><i class="fas fa-chart-pie mr-2"></i> PORTOFOLIO SUMMARY</h2>
+      <button class="btn btn-sm btn-outline-primary"  style="color: white; border-color: white;"  type="button" data-toggle="collapse" data-target="#plDetails">
+        <i class="fas fa-chevron-down"></i> P/L Details
+      </button>
+    </div>
+    
+    <div class="row">
+      <!-- Account Balance -->
+      <div class="col-md-4 mb-3">
+        <div class="summary-card" >
+          <div class="card-header">
+            <i class="fas fa-wallet mr-2"></i> Account Balance
+          </div>
+          <div class="card-value">{{ "${:,.2f}".format(user.account_balance) }}</div>
           {% if user.get_account_growth_percent() >= 0 %}
-            <p class="card-text text-center text-success">{{ "{:.2f}".format(user.get_account_growth_percent()*100) }}%</p>
+            <div class="card-change text-success">
+              <i class="fas fa-caret-up mr-1"></i>{{ "{:.2f}".format(user.get_account_growth_percent()*100) }}%
+            </div>
           {% else %}
-            <p class="card-text text-center text-danger">{{ "{:.2f}".format(user.get_account_growth_percent()*100) }}%</p>
+            <div class="card-change text-danger">
+              <i class="fas fa-caret-down mr-1"></i>{{ "{:.2f}".format(user.get_account_growth_percent()*100) }}%
+            </div>
           {% endif %}
         </div>
       </div>
-      <div class="card border-light mb-3"
-           style="max-width: 18rem">
-        <div class="card-header text-center text-light font-weight-bold bg-primary">EQUITY</div>
-        <div class="card-body">
-          <h4 class="card-title text-center"
-              id="equity">{{ "${:,.2f}".format(user.get_equity()) }}</h4>
+      
+      <!-- Equity -->
+      <div class="col-md-4 mb-3">
+        <div class="summary-card">
+          <div class="card-header">
+            <i class="fas fa-chart-line mr-2"></i> Equity
+          </div>
+          <div class="card-value">{{ "${:,.2f}".format(user.get_equity()) }}</div>
           {% if user.get_equity_growth_percent() >= 0 %}
-            <p class="card-text text-center text-success">{{ "{:.2f}".format(user.get_equity_growth_percent()*100) }}%</p>
+            <div class="card-change text-success">
+              <i class="fas fa-caret-up mr-1"></i>{{ "{:.2f}".format(user.get_equity_growth_percent()*100) }}%
+            </div>
           {% else %}
-            <p class="card-text text-center text-danger">{{ "{:.2f}".format(user.get_equity_growth_percent()*100) }}%</p>
+            <div class="card-change text-danger">
+              <i class="fas fa-caret-down mr-1"></i>{{ "{:.2f}".format(user.get_equity_growth_percent()*100) }}%
+            </div>
           {% endif %}
         </div>
       </div>
-      <div class="card border-light mb-3"
-           style="max-width: 18rem">
-        <div class="card-header text-center text-light font-weight-bold bg-primary">BUYING POWER</div>
-        <div class="card-body">
-          <h4 class="card-title text-center"
-              id="buying-power">{{ "${:,.2f}".format(user.get_buying_power()) }}</h4>
-        </div>
-      </div>
-      <div class="card border-light mb-3"
-           style="max-width: 18rem">
-        <div class="card-header text-center text-light font-weight-bold bg-primary">REALIZED P/L</div>
-        <div class="card-body">
-          <h4 class="card-title text-center"
-              id="realized-gain">{{ "${:,.2f}".format(user.get_realized_gain()) }}</h4>
-        </div>
-      </div>
-      <div class="card border-light mb-3"
-           style="max-width: 18rem">
-        <div class="card-header text-center text-light font-weight-bold bg-primary">UNREALIZED P/L</div>
-        <div class="card-body">
-          <h4 class="card-title text-center"
-              id="unrealized-gain">{{ "${:,.2f}".format(user.get_unrealized_gain()) }}</h4>
+      
+      <!-- Buying Power -->
+      <div class="col-md-4 mb-3">
+        <div class="summary-card">
+          <div class="card-header">
+            <i class="fas fa-money-bill-wave mr-2"></i> Buying Power
+          </div>
+          <div class="card-value">{{ "${:,.2f}".format(user.get_buying_power()) }}</div>
         </div>
       </div>
     </div>
-    <!-- Open Positions -->
-    <div class="mb-3"
-         id="portfolio">
-      <h5 >
-        Recent Trades <small class="ml-3"></small>
-      </h5>
-      {% if open_trades|length == 0 %}
-        <p class="mb-5">There are no open trades.</p>
-      {% else %}
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Timestamp</th>
-              <th scope="col"
-                  class="text-center">Symbol</th>
-              <th scope="col"
-                  class="text-center">Type</th>
-              <th scope="col"
-                  class="text-center">Quantity</th>
-              <th scope="col"
-                  class="text-center">Entry Price</th>
-              <th scope="col"
-                  class="text-center">Current Price</th>
-              <th scope="col"
-                  class="text-center">Unrealized P/L</th>
-              <th scope="col"
-                  class="text-center">Action</th>
-            </tr>
-          </thead>
-          <tbody class="trades-table">
-            {% for trade in open_trades %}
-              <tr data-trade-id={{ trade.id }}>
-                <td>{{ trade.id }}</td>
-                <td>{{ trade.get_date("entry") }}</td>
-                <td class="text-center">{{ trade.stock.symbol.upper() }}</td>
-                <td class="text-center">
-                  {{ trade.trade_type }}
-                </td>
-                <td class="text-center">
-                  {{ trade.qty }}
-                </td>
-                <td class="text-center">
-                  {{ trade.entry_price }}
-                </td>
-                <td class="text-center">
-                  {{ trade.latest_price }}
-                </td>
-                <td class="text-center {{'text-success' if trade.get_pnl() > 0 else 'text-danger' }}">
-                  {{ trade.get_pnl() }}
-                </td>
-                <td class="text-center">
-                  <button id="trade-exit-btn" class="btn btn-info btn-sm" data-trade-id={{ trade.id }}>View
-                  </button>
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      {% endif %}
-    </div>
-    <div id="closed-positions">
-      <h5>
-        Closed Positions
-      </h5>
-      {% if closed_trades|length == 0 %}
-        <p class="mb-5 text-secondary">
-          There are no closed positions.
-        </p>
-      {% else %}
-        <!-- Closed Positions -->
-        <table class="table table-hover"
-               id="closed-trades-table">
-          <thead>
-            <tr>
-              <th scope="col">
-                ID
-              </th>
-              <th scope="col">
-                Timestamp
-              </th>
-              <th scope="col"
-                  class="text-center">
-                Symbol
-              </th>
-              <th scope="col"
-                  class="text-center">
-                Type
-              </th>
-              <th scope="col"
-                  class="text-center">
-                Quantity
-              </th>
-              <th scope="col"
-                  class="text-center">
-                Entry Price
-              </th>
-              <th scope="col"
-                  class="text-center">
-                Exit Price
-              </th>
-              <th scope="col"
-                  class="text-center">
-                Realized P/L
-              </th>
-              <th scope="col"
-                  class="text-center">
-                Action
-              </th>
-            </tr>
-          </thead>
-          <tbody class="trades-table">
-            {% for trade in closed_trades %}
-              <tr>
-                <td>
-                  {{ trade.id }}
-                </td>
-                <td>
-                  {{ trade.get_date("exit") }}
-                </td>
-                <td class="text-center">
-                  {{ trade.stock.symbol.upper() }}
-                </td>
-                <td class="text-center">
-                  {{ trade.trade_type }}
-                </td>
-                <td class="text-center">
-                  {{ trade.qty }}
-                </td>
-                <td class="text-center">
-                  {{ trade.entry_price }}
-                </td>
-                <td class="text-center">
-                  {{ trade.latest_price }}
-                </td>
-                <td class="text-center {{'text-success' if trade.get_pnl() > 0 else 'text-danger' }}">
-                  {{ trade.get_pnl() }}
-                </td>
-                <td class="text-center">
-                  <button id="trade-exit-btn" class="btn btn-info btn-sm" data-trade-id={{ trade.id }}>View
-                  </button>
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      {% endif %}
+    
+    <!-- P/L Details Dropdown -->
+    <div class="collapse" id="plDetails" >
+      <div class="row mt-3">
+        <div class="col-md-6 mb-3">
+          <div class="summary-card">
+            <div class="card-header">
+              <i class="fas fa-coins mr-2"></i> Realized P/L
+            </div>
+            <div class="card-value">{{ "${:,.2f}".format(user.get_realized_gain()) }}</div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="summary-card">
+            <div class="card-header">
+              <i class="fas fa-chart-bar mr-2"></i> Unrealized P/L
+            </div>
+            <div class="card-value">{{ "${:,.2f}".format(user.get_unrealized_gain()) }}</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-{% endblock content %}
+
+  <!-- Recent Trades Table -->
+  <div class="trades-section mb-4">
+    <div class="section-header d-flex justify-content-between align-items-center mb-3">
+      <h3 style="color: #2e4230;"><i class="fas fa-exchange-alt mr-2"></i> RECENT TRADES</h3>
+    </div>
+    
+    <div class="table-responsive" style="border: 1px solid white; border-radius: 8px; box-shadow: 0 0 18px rgba(72, 99, 80, 0.9);
+">
+      <table class="table trades-table">
+        <thead style="background-color: #486350; color: white;">
+          <tr>
+            <th>ID</th>
+            <th>Timestamp</th>
+            <th class="text-center">Symbol</th>
+            <th class="text-center">Type</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Entry Price</th>
+            <th class="text-center">Current Price</th>
+            <th class="text-center">P/L</th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for trade in open_trades %}
+          <tr>
+            <td>{{ trade.id }}</td>
+            <td>{{ trade.get_date("entry") }}</td>
+            <td class="text-center">{{ trade.stock.symbol.upper() }}</td>
+            <td class="text-center">
+              <span class="badge {{ 'badge-success' if trade.trade_type == 'buy' else 'badge-danger' }}">
+                {{ trade.trade_type }}
+              </span>
+            </td>
+            <td class="text-center">{{ trade.qty }}</td>
+            <td class="text-center">{{ trade.entry_price }}</td>
+            <td class="text-center">{{ trade.latest_price }}</td>
+            <td class="text-center {{ 'text-success' if trade.get_pnl() > 0 else 'text-danger' }}">
+              {{ trade.get_pnl() }}
+            </td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-info">
+                <a class="btn btn-info btn-sm"
+                href="/trades/{{ trade.id }}">
+                <i class="fas fa-eye"></i> View
+              </a>
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+ 
+<!-- TradingView News Widget (Fixed) -->
+ <div class="widgets-container">
+<div class="tradingview-news-widget" 
+     style="background: rgba(255,255,255,0.05); 
+            border: 2px solid  rgb(249, 247, 247);
+            box-shadow: 0 0 18px rgba(72, 99, 80, 0.9);
+            backdrop-filter: blur(6px); 
+            border-radius: 12px; 
+            width: 550px;
+            height: 700px;
+            overflow: hidden;">
+  
+  <!-- TradingView's required container class -->
+  <div class="tradingview-widget-container__widget"></div>
+  
+  <div class="tradingview-widget-copyright" style="position:absolute; bottom:5px; font-size:9px">
+    <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+    </a>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const script = document.createElement('script');
+  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-timeline.js';
+  script.async = true;
+  script.innerHTML = JSON.stringify({
+    "feedMode": "all_symbols",
+    "isTransparent": true,
+    "displayMode": "regular",  // Changed from "compact"
+    "width": "100%",
+    "height": "100%",
+    "colorTheme": "light",
+    "locale": "en",
+  });
+  document.querySelector('.tradingview-news-widget').appendChild(script);
+});
+</script>
+
+
+   <!-- trading new widget end --> 
+
+<div class="small-chart">
+  <div class="charts-header">
+    <h1 class="main-heading">REAL-TIME CHARTS</h1>
+  </div>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-chartwidget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright" style="position:absolute;bottom: 5px; font-size:9px">
+    <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+    </a>
+  </div>
+  <script type="text/javascript">
+    // Create config object separately
+    const tradingViewConfig = {
+      "symbol": "FX:EURUSD",
+      "width": "500",
+      "height": "260",
+      "locale": "en",
+      "dateRange": "ALL",
+      "colorTheme": "light",
+      "isTransparent": false,
+      "autosize": true,
+      "largeChartUrl": ""
+    };
+    
+    // Create script element dynamically
+    const script = document.createElement('script');
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+    script.async = true;
+    script.innerHTML = JSON.stringify(tradingViewConfig);
+    document.currentScript.parentNode.appendChild(script);
+  </script>
+</div>
+<!-- TradingView Widget END -->
+<div class="chart-nav-container" style="border-radius: 8px;">
+  <p class="nav-description" style="font-weight: bold;">Explore real-time charts across different asset classes. Select a market to begin:</p>
+  <div class="market-nav-buttons">
+    <button class="nav-btn">
+      <i class="fas fa-dollar-sign"></i> Forex
+    </button>
+    <button class="nav-btn">
+      <i class="fas fa-chart-line"></i> Stocks
+    </button>
+    <button class="nav-btn">
+      <i class="fab fa-bitcoin"></i> Crypto
+    </button>
+    <button class="nav-btn">
+      <i class="fas fa-exchange-alt"></i> Futures
+    </button>
+    <button class="nav-btn">
+      <i class="fas fa-globe"></i> Indices
+    </button>
+  </div>
+</div>
+
+
+</div>
+
+</div>
+<section id="technical-analysis" >
+  <!-- TradingView Widget Container with Custom Dropdown -->
+  <div class="tradingview-symbolwidget-container" style="width: 520px;" >
+    <!-- Custom Dropdown Inside Widget -->
+    <div style="position: relative; top: 10px; margin-bottom: 20px; left: 10px; z-index: 100;">
+      <select id="symbol-selector" style="padding: 5px; background: rgba(255,255,255,0.4); border-radius: 3px; border: 1px solid #486350">
+          </select>
+      <script>
+        fetch('/static/options.json')
+          .then(response => response.json())
+          .then(options => {
+            const select = document.getElementById('symbol-selector');
+            options.forEach(option => {
+              const optElement = document.createElement('option');
+              optElement.value = option.value;
+              optElement.textContent = option.text;
+              select.appendChild(optElement);
+            });
+          });
+      </script>
+    </div>
+    <div class="tradingview-widget-container__widget" id="ta-widget"></div>
+  </div>
+
+  <!-- TradingView Widget Loader -->
+  <script>
+    function loadTechnicalAnalysis(symbol) {
+      document.getElementById('ta-widget').innerHTML = '';
+      
+      const script = document.createElement('script');
+      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js';
+      script.async = true;
+      script.innerHTML = JSON.stringify({
+        "interval": "15m",
+        "width": "512",
+        "height": "390",
+        "isTransparent": true,
+        "symbol": symbol,
+        "showIntervalTabs": true,
+        "displayMode": "single",
+        "locale": "en",
+        "colorTheme": "light"
+      });
+      
+      document.getElementById('ta-widget').appendChild(script);
+    }
+
+    // Initialize with default symbol
+    loadTechnicalAnalysis("NASDAQ:AAPL");
+    
+    // Handle symbol change
+    document.getElementById('symbol-selector').addEventListener('change', function() {
+      loadTechnicalAnalysis(this.value);
+    });
+  </script>
+</section>
+<div class="symbol">
+    <select id="symbolSelector"></select>
+    <p class="sub-description">DISCOVER LIVE SYMBOL'S INSIGHTS AND MARKET INFORMATION INSTANTLY:</p>
+<!-- TradingView Symbol Info Widget BEGIN -->
+<div class="tradingview-symbolwidget-container">
+  <div class="tradingview-widget-container__widget" id="symbol-info-widget" style="padding: 8px;"></div>
+</div>
+
+<script>
+  // Dynamically load the symbol-info script
+  function loadSymbolInfo(symbol) {
+    const container = document.getElementById('symbol-info-widget');
+    container.innerHTML = ''; // Clear previous widget
+
+    const script = document.createElement('script');
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js';
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      "symbol": symbol,
+      "width": "100%",
+      "height":'220',
+      "locale": "en",
+      "colorTheme": "light",
+      "isTransparent": false
+    });
+
+    container.appendChild(script);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    fetch('/static/symbols.json')
+      .then(response => response.json())
+      .then(symbols => {
+        const selector = document.getElementById('symbolSelector');
+
+        symbols.forEach(symbol => {
+          const option = document.createElement('option');
+          option.value = symbol;
+          option.text = symbol;
+          selector.appendChild(option);
+        });
+
+        // Set default to AAPL
+        selector.value = "NASDAQ:AAPL";
+        loadSymbolInfo("NASDAQ:AAPL");
+
+        selector.addEventListener('change', function (e) {
+          loadSymbolInfo(e.target.value);
+        });
+      });
+  });
+</script>
+<!-- TradingView Symbol Info Widget END -->
+<div class="symbol-overview">
+  
+</div>
+
+
+</div>
+
+</div>
+<style>
+</style>
+
+<script>
+  // Initialize dropdown toggle for P/L details
+  $(document).ready(function() {
+    $('[data-toggle="collapse"]').click(function() {
+      $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
+    });
+  });
+</script>
+{% endblock %}

@@ -17,7 +17,7 @@
                 <h4 class="card-title">{{ watchlist.name }}</h4>
                 <p class="card-text">{{ watchlist.description }}</p>
                 <a href="/watchlists/{{ watchlist.id }}"
-                   class="card-link">View</a>
+                   class="card-link" style="color: #34473a;">View</a>
               </div>
             </div>
           </div>
@@ -39,4 +39,93 @@
 {% block scripts %}
   <script src="{{url_for('.static', filename='delete_watchlist.js')}}"
           type="module"></script>
+          <style>
+            
+/* Buttons */
+.btn.btn-primary {
+    background-color: #486350 !important;
+    border-color: #486350 !important;
+    color: #ffffff;
+    font-weight: 600;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn.btn-primary:hover {
+    background-color: #34473a !important;
+    border-color: #34473a !important;
+}
+
+/* Cards */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 18rem;
+    background-color: #eff8eff0; /* Lighter shade for a classy look */
+    margin-bottom: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    color: #34473a;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    background-color: #486350;
+    color: #ffffff;
+    border-radius: 12px;
+}
+
+.card-text {
+    color: #486350;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    font-style: italic;
+}
+
+/* View link */
+.card-link {
+    color: #486350;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid #486350;
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    background-color: #E8F5E9;
+    border-radius:12px;
+    font-style: oblique;
+}
+
+.card-link:hover {
+    color: #34473a;
+    border-color: #34473a;
+}
+
+/* Empty message */
+.empty-message {
+    color: #486350;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #486350;
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 300px;
+    background-color: #E8F5E9;
+}
+          </style>
+          
+          
+          
 {% endblock scripts %}

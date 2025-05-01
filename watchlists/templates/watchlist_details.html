@@ -7,6 +7,73 @@
 {% endblock title %}
 
 {% block content %}
+<style>
+  /* Base button styling */
+  .btn {
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 0.45rem 1rem;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    border: none;
+  }
+
+  /* Primary (e.g. Add, Trade) */
+  .btn-primary {
+    background-color: #34473a !important;
+    color: #FBFADA !important;
+  }
+
+  .btn-primary:hover {
+    background-color: #486350 !important;
+    color: #ffffff !important;
+  }
+
+  /* Info (e.g. Edit) */
+  .btn-info {
+    background-color: #486350 !important;
+    color: #FBFADA !important;
+  }
+
+  .btn-info:hover {
+    background-color: #34473a !important;
+    color: #ffffff !important;
+  }
+
+  /* Danger (e.g. Delete, Remove) */
+  .btn-danger {
+    background-color: #b03c3c !important;
+    color: #ffffff !important;
+  }
+
+  .btn-danger:hover {
+    background-color: #8b2d2d !important;
+  }
+
+  /* Small buttons */
+  .btn-sm {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  /* Inline form button (Add Stock) */
+  #add-stock-btn {
+    background-color: #486350 !important;
+    color: #FBFADA !important;
+    font-weight: 600;
+  }
+
+  #add-stock-btn:hover {
+    background-color: #34473a !important;
+    color: #ffffff !important;
+  }
+
+  /* Error message */
+  #stock-error {
+    font-size: 0.85rem;
+  }
+</style>
+
   <div class="container mt-4">
     <!--Watchlist Header and Buttons-->
     <div class="row mb-3">
@@ -33,7 +100,7 @@
               action="">
           <input type="text" data-watchlist-id={{ watchlist.id }} placeholder="Symbol" class="form-control mr-3" id="stock-input" maxlength="10">
           <button class="btn btn-primary px-4"
-                  id="add-stock-btn">Add</button>
+                  id="add-stock-btn" style="background-color: #486350 !important;">Add</button>
         </form>
       </div>
       <small id="stock-error"
