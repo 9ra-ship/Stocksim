@@ -11,7 +11,7 @@
 :root {
     --sidebar-width: 250px;
     --primary-color: #FBFADA;
-    --dark-color: #486350;
+    --dark-color: #324d3f;
     --light-bg: rgba(255,255,255,0.1);
   }
   
@@ -27,7 +27,8 @@
     width: var(--sidebar-width);
     background-color: var(--dark-color);
     color: white;
-    font-size: larger;
+    font-size: 18px;
+    font-weight: bolder;
     padding: 20px 0;
     position: fixed;
     height: 100vh;
@@ -127,8 +128,8 @@
   .btn-new-trade:hover, 
 .btn-new-trade:focus, 
 .btn-new-trade:active {
-background-color: #486350 !important; /* Original green */
-border-color: #486350 !important;
+background-color: #324d3f !important; /* Original green */
+border-color: #324d3f !important;
 box-shadow: none !important;
 transform: none !important;
 opacity: 1 !important;
@@ -328,7 +329,7 @@ color: #34473a;
   }
  
   [data-target="#plDetails"]:hover {
-  background-color: #486350 !important;
+  background-color: #324d3f !important;
   color: white !important;
   border-color: white !important;
   box-shadow: none !important;
@@ -336,20 +337,20 @@ color: #34473a;
  
 .badge-success {
     background-color: transparent !important;
-    border: 1px solid #486350;
+    border: 1px solid #324d3f;
     color: black;
     font-size: 14px;
   }
 
   .badge-danger {
     background-color: transparent !important; 
-    border: 1px solid #486350;
+    border: 1px solid #324d3f;
     color: black;
     font-size: 14px;
   }
   .btn-info {
-  background-color: #486350 !important; /* Your custom color */
-  border-color: #486350 !important;
+  background-color: #324d3f !important; /* Your custom color */
+  border-color: #324d3f !important;
   color: white !important;
 }
 
@@ -408,7 +409,7 @@ color: #34473a;
 }
 
 .nav-btn:hover {
-  background: linear-gradient(135deg, #5c7a61, #486350);
+  background: linear-gradient(135deg, #5c7a61, #324d3f);
   box-shadow: 0 6px 14px rgba(72, 99, 80, 0.5);
   transform: translateY(-2px);
 }
@@ -477,7 +478,7 @@ color: #34473a;
 }
 
 #symbolSelector:hover {
-  border-color: #486350;
+  border-color: #324d3f;
 }
 
 .sub-description {

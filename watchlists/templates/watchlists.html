@@ -34,6 +34,90 @@
     <!--Create Watchlist Modal-->
     {% include "create_watchlist_modal.html" %}
   </div>
+  <h1 class="custom-heading">Grab an overview of global markets performance, including change values, Open, High, Low, and Close values for selected financial instruments.</h1>
+  <div class="watchlist_widget">
+    <!-- watchlist widget -->
+<div class="watchlist_widget" style="margin: 35px; width: 93.7%; height: 100%; background-color: #eff8eff0; 
+box-shadow: 0 0 18px rgba(72, 99, 80, 0.9);
+border-radius: 10px; ">
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+  </div>
+  <!-- TradingView Widget END -->
+
+  <script>
+    // Dynamically load the TradingView widget only once
+    fetch("/static/symbols_data.json")
+      .then(response => response.json())
+      .then(data => {
+        const config = {
+          width: "1030",  // Set the width
+          height: "550",  // Set the height
+          symbolsGroups: data,  // Use symbols data from the JSON
+          showSymbolLogo: true,
+          isTransparent: true,
+          colorTheme: "light",
+          locale: "en"
+        };
+
+        // Create the script tag for the TradingView widget
+        const widgetScript = document.createElement('script');
+        widgetScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js";
+        widgetScript.async = true;
+        widgetScript.innerHTML = JSON.stringify(config);
+
+        // Append the script tag to the container to load the widget
+        document.querySelector('.tradingview-widget-container__widget').appendChild(widgetScript);
+      })
+      .catch(console.error);
+  </script>
+</div>
+
+  </div>
+  <h1 class="custom-heading" >SEE THE TOP FIVE GAINING, LOSING, AND MOST ACTIVE STOCKS FOR THE DAY</h1>
+  
+  <!-- TradingView trend Widget BEGIN -->
+  <div class="watchlisttrend" style="margin: 35px; box-shadow: 0 0 18px rgba(72, 99, 80, 0.9);">
+    <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container" style="background-color: #eff8eff0; border-radius: 10px; " >
+  <div class="tradingview-widget-container__widget" id="hotlist-widget"></div>
+</div>
+
+<script>
+  const config = {
+    "colorTheme": "light",
+    "dateRange": "12M",
+    "exchange": "US",
+    "showChart": true,
+    "locale": "en",
+    "largeChartUrl": "",
+    "isTransparent": true,
+    "showSymbolLogo": true,
+    "showFloatingTooltip": false,
+    "width": "1035",
+    "height": "550",
+    "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+    "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+    "gridLineColor": "rgba(46, 46, 46, 0)",
+    "scaleFontColor": "rgba(15, 15, 15, 1)",
+    "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+    "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+    "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+    "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+    "symbolActiveColor": "rgba(41, 98, 255, 0.12)"
+  };
+
+  const script = document.createElement('script');
+  script.src = "https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js";
+  script.async = true;
+  script.innerHTML = JSON.stringify(config);
+  document.querySelector("#hotlist-widget").appendChild(script);
+</script>
+<!-- TradingView Widget END -->
+
+  </div>
+  
 {% endblock content %}
 
 {% block scripts %}
@@ -124,6 +208,25 @@
     max-width: 300px;
     background-color: #E8F5E9;
 }
+.custom-heading {
+  margin: 35px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.8rem;
+  padding: 20px 30px;
+  color: #f2f2f2; /* Muted white */
+  background: linear-gradient(to right, #34473a, #4f6e5f);  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  cursor: default;
+  display: inline-block;
+}
+
+.custom-heading:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
           </style>
           
           

@@ -47,6 +47,11 @@
               <i class="fas fa-book"></i> LECTURES
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/screener.html">
+              <i class="fas fa-trophy"></i> SCREENERS
+            </a>
+          </li>
         {% endif %}
         {% if not g.user %}
           <li class="nav-item">
@@ -76,11 +81,11 @@
         
         <div class="user-controls">
           {% if g.user %}
-            <a class="btn btn-success btn-new-trade px-3" href="/trades/new" style="background-color: #486350; border-color: #486350">
+            <a class="btn btn-success btn-new-trade px-3" href="/trades/new" style="background-color: #324d3f; border-color: #324d3f">
               <i class="fas fa-plus-circle"></i> NEW TRADE
             </a>
             <div class="dropdown d-inline-block">
-              <a class="nav-link dropdown-toggle" style="background-color: #486350; color: white;"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
+              <a class="nav-link dropdown-toggle" style="background-color: #324d3f; color: white;"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
                 <i class="fas fa-user-circle mr-2"></i>{{ g.user.username }} 
               </a>
               <div class="dropdown-menu dropdown-menu-right">

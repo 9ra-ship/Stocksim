@@ -44,7 +44,10 @@ def quiz(quiz_number):
 def progress():
     return render_template('progress.html')
    
-
+#route for screener
+@app.route('/screener.html')  # Explicit route for screener.html
+def screener():
+    return render_template('screener.html')
 # Run before each request
 @app.before_request
 def add_user_to_g():

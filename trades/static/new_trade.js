@@ -46,7 +46,7 @@ async function handleNewTradeSubmission(e) {
       ${trade.symbol} at $${trade.entry_price} (Ticket# ${trade.trade_id})`
     );
     $("#confirmationModal").modal("show");
-
+    
     // reset form
     $("#new-trade-form").trigger("reset");
   }

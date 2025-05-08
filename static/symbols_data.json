@@ -1,0 +1,124 @@
+[
+    {
+      "name": "Indices",
+      "originalName": "Indices",
+      "symbols": [
+        { "name": "FOREXCOM:SPXUSD", "displayName": "S&P 500 Index" },
+        { "name": "FOREXCOM:NSXUSD", "displayName": "US 100 Cash CFD" },
+        { "name": "FOREXCOM:DJI", "displayName": "Dow Jones Industrial Average Index" },
+        { "name": "INDEX:NKY", "displayName": "Japan 225" },
+        { "name": "INDEX:DEU40", "displayName": "DAX Index" },
+        { "name": "FOREXCOM:UKXGBP", "displayName": "FTSE 100 Index" },
+        {
+            "name": "INDEX:NKY",
+            "displayName": "Japan 225"
+          },
+          {
+            "name": "INDEX:DEU40",
+            "displayName": "DAX Index"
+          },
+          {
+            "name": "FOREXCOM:UKXGBP",
+            "displayName": "FTSE 100 Index"
+          },
+          {
+            "name": "NSE:NIFTY",
+            "displayName": "Nifty 50 Index"
+          },
+          {
+            "name": "CRYPTOCAP:BTC.D",
+            "displayName": "Market Cap BTC Dominance"
+          },
+          {
+            "name": "CRYPTOCAP:USDT.D",
+            "displayName": "Market Cap USDT Dominance"
+          },
+          {
+            "name": "NSE:BANKNIFTY",
+            "displayName": "Nifty Bank Index"
+          },
+          {
+            "name": "CAPITALCOM:US500",
+            "displayName": "US 500"
+          },
+          {
+            "name": "FX:NAS100",
+            "displayName": "US 100 Index"
+          },
+          {
+            "name": "CBOE:SPX",
+            "displayName": "S&P 500 Index"
+          },
+          {
+            "name": "BSE:SENSEX",
+            "displayName": "S&P BSE Sensex"
+          },
+          {
+            "name": "CAPITALCOM:DE40",
+            "displayName": "Germany 40"
+          },
+          {
+            "name": "FX:GER30",
+            "displayName": "Germany 30"
+          },
+          {
+            "name": "FOREXCOM:US30",
+            "displayName": "Dow Jones 30"
+          },
+          {
+            "name": "NSE:INDIAVIX",
+            "displayName": "India VIX"
+          },
+          {
+            "name": "SET:SET",
+            "displayName": "SET Index"
+          },
+          {
+            "name": "NSE:CNXFINANCE",
+            "displayName": "Nifty Financial Services"
+          },
+          {
+            "name": "BIST:XU100",
+            "displayName": "BIST 100"
+          },
+          {
+            "name": "HOSE:VNINDEX",
+            "displayName": "VN-Index"
+          }
+        
+      ]
+    },
+    {
+      "name": "Forex",
+      "originalName": "Forex",
+      "symbols": [
+        { "name": "FX:EURUSD", "displayName": "EUR to USD" },
+        { "name": "FX:GBPUSD", "displayName": "GBP to USD" },
+        { "name": "FX:USDJPY", "displayName": "USD to JPY" },
+        { "name": "FX:USDCHF", "displayName": "USD to CHF" },
+        { "name": "FX:AUDUSD", "displayName": "AUD to USD" },
+        { "name": "FX:USDCAD", "displayName": "USD to CAD" }
+      ]
+    },
+    {
+      "name": "Futures",
+      "originalName": "Futures",
+      "symbols": [
+        { "name": "BMFBOVESPA:ISP1!", "displayName": "S&P 500 Index Futures" },
+        { "name": "BMFBOVESPA:EUR1!", "displayName": "Euro Futures" },
+        { "name": "PYTH:WTI3!", "displayName": "WTI CRUDE OIL" },
+        { "name": "BMFBOVESPA:ETH1!", "displayName": "Hydrous ethanol" },
+        { "name": "BMFBOVESPA:CCM1!", "displayName": "Corn" }
+      ]
+    },
+    {
+      "name": "Bonds",
+      "originalName": "Bonds",
+      "symbols": [
+        { "name": "EUREX:FGBL1!", "displayName": "Euro Bund" },
+        { "name": "EUREX:FBTP1!", "displayName": "Euro BTP" },
+        { "name": "EUREX:FGBM1!", "displayName": "Euro BOBL" }
+      ]
+    }
+  ]
+  

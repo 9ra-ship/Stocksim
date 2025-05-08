@@ -110,9 +110,49 @@
       </div>
     </div>
   </div>
+   <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container" style="height:100%;width:100%; margin-top: 40px;">
+  <div class="tradingview-widget-container__widget" style="height:600px;width:100%"></div>
+</div>
+<!-- TradingView Widget END -->
+
+
 {% endblock content %}
 
 {% block scripts %}
   <script src="{{url_for('.static', filename='close_trade.js')}}"
           type="module"></script>
+
+
+  <!-- TradingView Advanced Chart -->
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      const script = document.createElement("script");
+      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+      script.async = true;
+      script.innerHTML = JSON.stringify({
+        "autosize": true,
+        "symbol": "{{ trade.stock.symbol.upper() }}",  // Inject dynamic symbol from backend
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "light",  // or "dark"
+        "style": "1",
+        "locale": "en",
+        "allow_symbol_change": true,
+        "watchlist": [
+          "NASDAQ:TSLA",
+          "NASDAQ:NVDA",
+          "NASDAQ:AMZN",
+          "NASDAQ:META",
+          "NASDAQ:MSTR",
+          "NASDAQ:NFLX",
+          "NASDAQ:GOOGL",
+          "NYSE:BABA"
+        ],
+        "support_host": "https://www.tradingview.com"
+      });
+
+      document.querySelector(".tradingview-widget-container__widget").appendChild(script);
+    });
+  </script>
 {% endblock scripts %}

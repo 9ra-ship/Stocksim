@@ -44,6 +44,7 @@ class Stock(db.Model):
         else:
             return False
 
+
     @classmethod
     def get_name(cls, symbol):
         """Get stock name from Alpaca API
