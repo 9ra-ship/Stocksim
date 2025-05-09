@@ -1,15 +1,155 @@
-{% extends "base.html" %}
-
-{% block title %}
-  Welcome to Stock MasterMind
-{% endblock title %}
-
 {% block content %}
-  <div class="container mt-5">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Stock Learn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header style="position: sticky;">
+    <div class="logo"><img src="/static/img/stock.png" style="height: 60px; width: 60px;"></div>
+    <div style="font-weight: bold; font-size: 30px; margin-left: -210px;">Stock Learn</div>
+    <nav>
+      <a href="#why">Why Stock Master?</a>
+      <a href="#how">How it works</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button id="scrollToAuth" type="button" class="btn" style="background: #44564b;">Signup/Login</button>
+  </header>  
+  <section class="hero">
+    <h1>LEARN HOW TO TRADE WITHOUT ANY RISKS</h1>
+    <p>Stock Master offers a seamless, secure experience for learning trading with virtual digital assets. Instant trades, optimized balance, and easy to understand.</p>
+    <div class="hero-image">
+        <img src="/static/img/dashboard.png" alt="Trading illustration" />
+      </div>
+    <button id="ToAuth" type="button" class="btn">Get started now →</button>
+  </section>
+
+  <section class="section">
+    <h2>Simplicity, performance, and relaibility, empowering you to navigate the trade world with confidence and no risk.</h2>
+  </section>
+
+  <section id="why" class="section">
+    <h2>Why Choose Stock Master?</h2>
+    <p>Benefits designed to provide a seamless, risk free, and accessible experience for all users.</p>
+    <div class="features">
+      <div class="feature">
+        <h3>Risk Free Learning</h3>
+        <p>Your trade-learning journey is protected with virtual assets.</p>
+      </div>
+      <div class="feature">
+        <h3>Instant Trades</h3>
+        <p>Execute your trades in real-time, without delays.</p>
+      </div>
+      <div class="feature">
+        <h3>Real-Time Data</h3>
+        <p>Benefit from the latest data on the market.</p>
+      </div>
+      <div class="feature">
+        <h3>Premium Interface</h3>
+        <p>An elegant, intuitive design that’s easy to use for beginners.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="crypto-section">
+    <div class="crypto-text">
+      <h2>All Assets, One Platform</h2>
+      <p>Buy, sell, and convert all major stocks and different currencies on a single platform. A seamless experience with no compromises.</p>
+      <button id="scrollAuth" type="button" class="btn">Trade now →</button>
+    </div>
+    <div class="crypto-list">
+      <div class="crypto-item">Solana $194.46 <span style="color:red">-0.65%</span></div>
+      <div class="crypto-item">Dash $24.68 <span style="color:lightgreen">+1.71%</span></div>
+      <div class="crypto-item">XRP $2.407 <span style="color:lightgreen">+1.66%</span></div>
+      <div class="crypto-item">Ethereum $2609.21</div>
+      <div class="crypto-item">Bitcoin $9354.74</div>
+    </div>
+  </section>
+  <div id="how" class="container">
+    <h2>How It Works</h2>
+    <p>A simple, fast, and secure platform to place trades in just a few steps.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Create your account</h3>
+        <p>Sign up easily and secure your profile in just a few steps.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Start with a wallet</h3>
+        <p>A portfolio with virtual amount to start trading.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Buy & sell</h3>
+        <p>Enjoy the simplicity of a platform that makes every transaction seamless in real-time.</p>
+      </div>
+    </div>
+    
+    <div id="faq" class="faq">
+      <h2>Your Questions, Answered</h2>
+      <p>Find everything you need to know about Stock Master, from learning to supported assets.</p>
+    
+      <div class="faq-grid">
+        <!-- First Row - 4-column layout -->
+        <div class="faq-row">
+          <div class="faq-item">
+            <div class="faq-question">What is Stock Master? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Stock Master is a virtual trading platform designed to help beginners learn stock market investing without risking real money. You get a virtual portfolio to practice trading with real-time market data.</div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">How fast are transactions? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer">All trades execute instantly at current market prices, just like paper trading. There's no settlement period since you're using virtual funds.</div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">Is trading on Stock Master secure? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Absolutely. We use bank-level encryption for all data, and since you're not using real money, there's no financial risk. Your personal information is always protected.</div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">Do I need to verify my identity? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer">No identity verification is required as this is a learning platform using virtual currency. Just sign up with your email to get started.</div>
+          </div>
+        </div>
+    
+        <!-- Second Row - Full width items -->
+        <div class="faq-item full-width">
+          <div class="faq-question">Which cryptocurrencies and stocks are supported? <span class="faq-toggle">+</span></div>
+          <div class="faq-answer">We support all major NYSE and NASDAQ stocks, plus top cryptocurrencies including Bitcoin, Ethereum, Solana, XRP, and Dash. New assets are added regularly.</div>
+        </div>
+        
+        <div class="faq-item full-width">
+          <div class="faq-question">Can I access Stock Master without being associated with an institution? <span class="faq-toggle">+</span></div>
+          <div class="faq-answer">Yes! Stock Master is available to anyone worldwide. No institutional affiliation or prior trading experience is required - it's perfect for individual learners.</div>
+        </div>
+        
+        <div class="faq-item full-width">
+          <div class="faq-question">What are the requirements for transactions? <span class="faq-toggle">+</span></div>
+          <div class="faq-answer">There are no minimum requirements. You'll start with a virtual balance to begin trading immediately. All transactions use our virtual currency.</div>
+        </div>
+        
+        <div class="faq-item full-width">
+          <div class="faq-question">How can I contact support? <span class="faq-toggle">+</span></div>
+          <div class="faq-answer">Our support team is available 24/7 via email at support@stockmaster.com or through the live chat feature in the platform. Average response time is under 2 hours.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="authSection" class="container mt-5">
     <div class="row">
       <div class="col-6 align-self-center">
-        <p class="display-2 text-center text-primary font-weight-bold">STOCK</p>
-        <p class="h2 text-center text-primary">Trade NYSE Stocks Live!</p>
+        <p class="display-2 text-center font-weight-bold">START NOW!</p>
+        <p class="h2 text-center">Trade NYSE Stocks Live!</p>
         <p class="h4 text-center mt-3 text-secondary">
           Test your trading skills and strategies by trading stocks live! Buy and sell your favorite companies with virtual funds and keep a track of your performance. Also, use watchlists to track the prices of your favorite stocks!
         </p>
@@ -22,12 +162,79 @@
         </div>
         
       </div>
-      <div class="col-6">
-        <img src="/static/img/stock-market-laptop.jpg"
-             alt="Stock Market Image"
-             width="400"
-             style="border-radius: 2%">
-      </div>
     </div>
   </div>
+
+  <footer>
+    <p>© 2025 Stock MasterMind. All rights reserved.</p>
+    <p>
+      <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a> |
+      <a href="{{ url_for('terms_of_service') }}">Terms of Service</a> |
+      <a href="{{ url_for('support') }}">Support</a>
+    </p>
+  </footer>
+  <script>
+    const modal = document.getElementById('authModal');
+    const loginBtn = document.querySelector('button.btn');
+  
+    loginBtn.addEventListener('click', () => {
+      modal.style.display = 'flex';
+    });
+  
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+  </script>
+  <script>
+    document.getElementById("scrollToAuth").addEventListener("click", function () {
+      const target = document.getElementById("authSection");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  </script>
+  <script>
+    document.getElementById("scrollAuth").addEventListener("click", function () {
+      const target = document.getElementById("authSection");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  </script>
+  <script>
+    document.getElementById("ToAuth").addEventListener("click", function () {
+      const target = document.getElementById("authSection");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  </script>
+  <script>
+    document.querySelectorAll('.faq-question').forEach(question => {
+  question.addEventListener('click', () => {
+    // Close all other FAQs first
+    document.querySelectorAll('.faq-item').forEach(item => {
+      if (item !== question.parentElement) {
+        item.classList.remove('active');
+        item.querySelector('.faq-answer').classList.remove('active');
+        item.querySelector('.faq-toggle').textContent = '+';
+      }
+    });
+    
+    // Toggle current FAQ
+    const faqItem = question.parentElement;
+    const answer = question.nextElementSibling;
+    const toggle = question.querySelector('.faq-toggle');
+    
+    faqItem.classList.toggle('active');
+    answer.classList.toggle('active');
+    
+    toggle.textContent = faqItem.classList.contains('active') ? '×' : '+';
+  });
+});
+  </script>
+  
+
+</body>
+</html>
 {% endblock content %}

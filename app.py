@@ -74,5 +74,15 @@ def page_not_found(e):
 
     return render_template("404.html"), 404
 
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy-policy.html')
 
+@app.route('/terms-of-service') 
+def terms_of_service():
+    return render_template('terms-of-service.html')
+
+@app.route('/support')
+def support():
+    return render_template('support.html')
 

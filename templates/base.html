@@ -27,16 +27,19 @@
               <i class="fas fa-tachometer-alt"></i> DASHBOARD
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/trades/open">
-              <i class="fas fa-chart-line"></i> OPEN TRADES
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-chart-line"></i> SEE TRADES
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/trades/history">
-              <i class="fas fa-history"></i> TRADING HISTORY
-            </a>
-          </li>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/trades/open">
+                <i class="fas fa-chart-line"></i> OPEN TRADES
+              </a>
+              <a class="dropdown-item" href="/trades/history">
+                <i class="fas fa-history"></i> TRADING HISTORY
+              </a>
+            </div>
+          </li>          
           <li class="nav-item">
             <a class="nav-link" href="/watchlists">
               <i class="fas fa-star"></i> WATCHLISTS
@@ -184,6 +187,17 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
     });
 }
 
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        // Manually toggle the dropdown
+        $('#navbarDropdown').on('click', function(e) {
+          e.preventDefault();
+          $(this).next('.dropdown-menu').toggleClass('show');
+        });
+      });
     </script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
